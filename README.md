@@ -1,33 +1,33 @@
-# Generative AI for Class Imbalance using CTGAN vs SMOTE
+# 🚀 Generative AI for Class Imbalance using CTGAN vs SMOTE
 
 ## 📌 Overview
 
-Class imbalance is a critical problem in machine learning, especially in high-risk domains like fraud detection. Traditional models often fail to detect minority class instances.
+Class imbalance is a major challenge in machine learning, especially in **fraud detection**, where rare events are critical.
 
-This project compares:
+This project presents a **comparative study** between:
 
 * Baseline Random Forest
-* SMOTE (Oversampling)
-* CTGAN (Generative AI)
+* SMOTE (Interpolation-based Oversampling)
+* CTGAN (Generative AI-based Augmentation)
 
-on the **Credit Card Fraud Detection dataset**.
+using the Credit Card Fraud Detection dataset.
 
 ---
 
 ## 🎯 Objective
 
-* Improve minority class detection (fraud cases)
-* Compare interpolation vs generative augmentation
+* Improve detection of minority class (fraud cases)
+* Compare traditional vs generative augmentation
 * Analyze trade-offs using precision-recall metrics
 
 ---
 
 ## 🧠 Key Concepts
 
-* Class Imbalance Learning
-* Synthetic Data Augmentation
+* Imbalanced Learning
+* Synthetic Data Generation
 * Generative Adversarial Networks (CTGAN)
-* Precision-Recall AUC
+* Precision-Recall AUC (PR-AUC)
 
 ---
 
@@ -36,7 +36,7 @@ on the **Credit Card Fraud Detection dataset**.
 * Python
 * Scikit-learn
 * Pandas, NumPy
-* CTGAN (SDV)
+* CTGAN (SDV Library)
 * Matplotlib
 
 ---
@@ -44,11 +44,10 @@ on the **Credit Card Fraud Detection dataset**.
 ## 📊 Dataset
 
 * Credit Card Fraud Detection Dataset
-* Highly imbalanced (<1% fraud cases)
+* Extremely imbalanced (<1% fraud)
 * PCA-transformed features
 
-Dataset Link:
-https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud
+🔗 https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud
 
 ---
 
@@ -57,7 +56,7 @@ https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud
 1. Train baseline model on imbalanced data
 2. Apply SMOTE for oversampling
 3. Generate synthetic data using CTGAN
-4. Train Random Forest on all setups
+4. Train Random Forest on all configurations
 5. Evaluate using:
 
    * Recall
@@ -78,9 +77,36 @@ https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud
 
 ## 🔍 Key Insights
 
-* CTGAN improves **minority detection (Recall)**
-* SMOTE provides better **precision-recall balance**
-* Generative models are powerful but not always superior
+* ✅ CTGAN achieves **highest recall (85.71%)** → better fraud detection
+* ✅ SMOTE achieves **highest PR-AUC (0.8741)** → better precision-recall balance
+* ⚠️ Generative models improve sensitivity but may increase false positives
+
+---
+
+## 📊 Visualizations
+
+### Precision-Recall Curve
+
+(Add image here: `/results/pr_curve.png`)
+
+### Model Comparison
+
+(Add graph here: `/results/comparison.png`)
+
+---
+
+## 📁 Project Structure
+
+```
+CTGAN-vs-SMOTE-Imbalanced-Learning/
+│── notebooks/
+│── src/
+│── results/
+│── paper/
+│── report/
+│── presentation/
+│── README.md
+```
 
 ---
 
@@ -95,36 +121,12 @@ python train_ctgan.py
 
 ---
 
-## 📊 Visualizations
-
-* Precision-Recall Curve
-* Performance comparison graphs
-
-(Add images in /results folder)
-
----
-
-## 📁 Project Structure
-
-```
-(mention folder tree here)
-```
-
----
-
 ## 🚀 Future Work
 
-* Try Diffusion Models for tabular data
-* Hyperparameter tuning for CTGAN
-* Multi-dataset evaluation
+* Apply diffusion models for tabular data
+* Optimize CTGAN hyperparameters
+* Test on multiple datasets
 
 ---
 
-## 👨‍💻 Authors
 
-* Harikrishna
-* Team Members
-
----
-
-## ⭐ If you found this useful, star the repo!
