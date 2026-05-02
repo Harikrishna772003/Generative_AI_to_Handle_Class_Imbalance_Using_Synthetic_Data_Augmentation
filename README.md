@@ -2,32 +2,32 @@
 
 ## 📌 Overview
 
-Class imbalance is a major challenge in machine learning, especially in **fraud detection**, where rare events are critical.
+Class imbalance is a critical issue in machine learning, especially in fraud detection where minority cases are rare but important.
 
-This project presents a **comparative study** between:
+This project presents a comparative analysis of:
 
 * Baseline Random Forest
-* SMOTE (Interpolation-based Oversampling)
-* CTGAN (Generative AI-based Augmentation)
+* SMOTE (Oversampling)
+* CTGAN (Generative AI)
 
-using the Credit Card Fraud Detection dataset.
+All models are implemented in a **single unified pipeline**.
 
 ---
 
 ## 🎯 Objective
 
-* Improve detection of minority class (fraud cases)
-* Compare traditional vs generative augmentation
-* Analyze trade-offs using precision-recall metrics
+* Improve detection of minority class (fraud transactions)
+* Compare traditional oversampling vs generative augmentation
+* Evaluate models using precision-recall metrics
 
 ---
 
 ## 🧠 Key Concepts
 
 * Imbalanced Learning
-* Synthetic Data Generation
+* Synthetic Data Augmentation
 * Generative Adversarial Networks (CTGAN)
-* Precision-Recall AUC (PR-AUC)
+* Precision-Recall AUC
 
 ---
 
@@ -36,7 +36,8 @@ using the Credit Card Fraud Detection dataset.
 * Python
 * Scikit-learn
 * Pandas, NumPy
-* CTGAN (SDV Library)
+* Imbalanced-learn (SMOTE)
+* SDV (CTGAN)
 * Matplotlib
 
 ---
@@ -44,8 +45,8 @@ using the Credit Card Fraud Detection dataset.
 ## 📊 Dataset
 
 * Credit Card Fraud Detection Dataset
-* Extremely imbalanced (<1% fraud)
-* PCA-transformed features
+* Highly imbalanced (<1% fraud cases)
+* PCA-transformed numerical features
 
 🔗 https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud
 
@@ -53,10 +54,12 @@ using the Credit Card Fraud Detection dataset.
 
 ## 🧪 Methodology
 
+The complete workflow is implemented in a single script:
+
 1. Train baseline model on imbalanced data
-2. Apply SMOTE for oversampling
-3. Generate synthetic data using CTGAN
-4. Train Random Forest on all configurations
+2. Apply SMOTE to balance training data
+3. Generate synthetic samples using CTGAN
+4. Train Random Forest on all datasets
 5. Evaluate using:
 
    * Recall
@@ -77,56 +80,69 @@ using the Credit Card Fraud Detection dataset.
 
 ## 🔍 Key Insights
 
-* ✅ CTGAN achieves **highest recall (85.71%)** → better fraud detection
-* ✅ SMOTE achieves **highest PR-AUC (0.8741)** → better precision-recall balance
-* ⚠️ Generative models improve sensitivity but may increase false positives
-
----
-
-## 📊 Visualizations
-
-### Precision-Recall Curve
-
-(Add image here: `/results/pr_curve.png`)
-
-### Model Comparison
-
-(Add graph here: `/results/comparison.png`)
-
----
-
-## 📁 Project Structure
-
-```
-CTGAN-vs-SMOTE-Imbalanced-Learning/
-│── notebooks/
-│── src/
-│── results/
-│── paper/
-│── report/
-│── presentation/
-│── README.md
-```
+* CTGAN improves minority class detection (higher recall)
+* SMOTE provides better precision-recall stability (higher PR-AUC)
+* Choice of method depends on application priorities (sensitivity vs precision)
 
 ---
 
 ## ▶️ How to Run
 
-```bash
+### 1. Install dependencies
+
+```bash id="p1n0gq"
 pip install -r requirements.txt
-python train_baseline.py
-python train_smote.py
-python train_ctgan.py
+```
+
+### 2. Run the complete pipeline
+
+```bash id="0s6c2k"
+python src/train_all.py
+```
+
+---
+
+## 📁 Project Structure
+
+```id="y3q4mw"
+CTGAN-vs-SMOTE-Imbalanced-Learning/
+│
+├── data/
+│   └── creditcard.csv
+│
+├── src/
+│   └── train_all.py
+│
+├── notebooks/
+│   └── implementation.ipynb
+│
+├── paper/
+│   └── research_paper.pdf
+│
+├── report/
+│   └── project_report.pdf
+│
+├── presentation/
+│   └── ppt.pptx
+│
+├── README.md
+└── requirements.txt
 ```
 
 ---
 
 ## 🚀 Future Work
 
-* Apply diffusion models for tabular data
-* Optimize CTGAN hyperparameters
-* Test on multiple datasets
+* Explore diffusion-based models for tabular data
+* Improve CTGAN stability with hyperparameter tuning
+* Evaluate performance across multiple real-world datasets
 
 ---
 
+## ✅ Conclusion
 
+This project demonstrates that handling class imbalance is not a one-size-fits-all problem. While generative models like CTGAN improve sensitivity toward rare events, traditional techniques like SMOTE still offer strong and reliable performance.
+
+A careful balance between recall and precision is essential when deploying machine learning models in high-risk domains such as fraud detection.
+
+---
