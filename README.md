@@ -2,23 +2,23 @@
 
 ## 📌 Overview
 
-Class imbalance is a critical issue in machine learning, especially in fraud detection where minority cases are rare but important.
+Class imbalance is a critical issue in machine learning, especially in fraud detection where minority cases are rare but highly important.
 
 This project presents a comparative analysis of:
 
 * Baseline Random Forest
-* SMOTE (Oversampling)
-* CTGAN (Generative AI)
+* SMOTE (Synthetic Minority Oversampling Technique)
+* CTGAN (Generative AI-based augmentation)
 
-All models are implemented in a **single unified pipeline**.
+The entire workflow is implemented in a **single pipeline script** for simplicity and reproducibility.
 
 ---
 
 ## 🎯 Objective
 
 * Improve detection of minority class (fraud transactions)
-* Compare traditional oversampling vs generative augmentation
-* Evaluate models using precision-recall metrics
+* Compare traditional oversampling with generative augmentation
+* Evaluate models using precision-recall based metrics
 
 ---
 
@@ -27,7 +27,7 @@ All models are implemented in a **single unified pipeline**.
 * Imbalanced Learning
 * Synthetic Data Augmentation
 * Generative Adversarial Networks (CTGAN)
-* Precision-Recall AUC
+* Precision-Recall AUC (PR-AUC)
 
 ---
 
@@ -54,13 +54,13 @@ All models are implemented in a **single unified pipeline**.
 
 ## 🧪 Methodology
 
-The complete workflow is implemented in a single script:
+The complete workflow is implemented in `train_all.py`:
 
 1. Train baseline model on imbalanced data
 2. Apply SMOTE to balance training data
-3. Generate synthetic samples using CTGAN
-4. Train Random Forest on all datasets
-5. Evaluate using:
+3. Generate synthetic data using CTGAN
+4. Train Random Forest on all three datasets
+5. Evaluate performance using:
 
    * Recall
    * F1-score
@@ -80,9 +80,9 @@ The complete workflow is implemented in a single script:
 
 ## 🔍 Key Insights
 
-* CTGAN improves minority class detection (higher recall)
-* SMOTE provides better precision-recall stability (higher PR-AUC)
-* Choice of method depends on application priorities (sensitivity vs precision)
+* CTGAN improves **minority class detection (higher recall)**
+* SMOTE provides better **precision-recall balance (higher PR-AUC)**
+* The choice of technique depends on application requirements (sensitivity vs stability)
 
 ---
 
@@ -90,13 +90,21 @@ The complete workflow is implemented in a single script:
 
 ### 1. Install dependencies
 
-```bash id="p1n0gq"
+```bash id="3d2dvy"
 pip install -r requirements.txt
 ```
 
-### 2. Run the complete pipeline
+### 2. Place dataset
 
-```bash id="0s6c2k"
+Download dataset and put here:
+
+```id="5lxt07"
+data/creditcard.csv
+```
+
+### 3. Run the project
+
+```bash id="3xg6tw"
 python src/train_all.py
 ```
 
@@ -104,7 +112,7 @@ python src/train_all.py
 
 ## 📁 Project Structure
 
-```id="y3q4mw"
+```id="7cavjf"
 CTGAN-vs-SMOTE-Imbalanced-Learning/
 │
 ├── data/
@@ -113,17 +121,14 @@ CTGAN-vs-SMOTE-Imbalanced-Learning/
 ├── src/
 │   └── train_all.py
 │
+├── results/
+│   └── pr_comparison.png
+│
 ├── notebooks/
-│   └── implementation.ipynb
+│   └── RPimplementation.ipynb
 │
 ├── paper/
-│   └── research_paper.pdf
-│
-├── report/
-│   └── project_report.pdf
-│
-├── presentation/
-│   └── ppt.pptx
+│   └── UPD_RP.pdf
 │
 ├── README.md
 └── requirements.txt
@@ -133,16 +138,18 @@ CTGAN-vs-SMOTE-Imbalanced-Learning/
 
 ## 🚀 Future Work
 
-* Explore diffusion-based models for tabular data
-* Improve CTGAN stability with hyperparameter tuning
-* Evaluate performance across multiple real-world datasets
+* Apply diffusion-based models for tabular data
+* Improve CTGAN stability through hyperparameter tuning
+* Evaluate performance across multiple datasets
 
 ---
 
 ## ✅ Conclusion
 
-This project demonstrates that handling class imbalance is not a one-size-fits-all problem. While generative models like CTGAN improve sensitivity toward rare events, traditional techniques like SMOTE still offer strong and reliable performance.
+This project demonstrates that handling class imbalance requires a balance between sensitivity and precision. While CTGAN enhances detection of rare events, SMOTE remains a strong and efficient baseline for maintaining overall model stability.
 
-A careful balance between recall and precision is essential when deploying machine learning models in high-risk domains such as fraud detection.
+Selecting the right approach depends on domain requirements, especially in high-risk applications such as fraud detection.
 
 ---
+
+## ⭐ If this project helped you, consider giving it a star!
